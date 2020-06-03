@@ -17,7 +17,5 @@
     "url": "https://github.com/Cobrettie/node-api1-project/issues"
   },
   "homepage": "https://github.com/Cobrettie/node-api1-project#readme",
-  "dependencies": {
-    "gitignore": "^0.6.0"
-  }
+  "dependencies": {}
 }
