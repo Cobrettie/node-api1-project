@@ -31,11 +31,21 @@ server.get('/api/users/:id', (req, res) => {
 
 // Delete
 server.delete('/api/users/:id', (req, res) => {
-  // remove user with specified id
-  // returns deleted user
-
   const { id } = req.params;
-  console.log(id);
+  const found = users.find(user => user.id === id);
+
+  if (found) {
+    users = users.filter(user => user.id !== id)
+    res.status(200).json(found)
+  } else {
+    res.status(500).json({ errorMessage: "The user could not be removed" })
+  }
+
+  if (!found) {
+    res.status(404).json({ message: "The user with the specified ID does not exist" })
+  }
+  
+
 })
 
 // Edit
