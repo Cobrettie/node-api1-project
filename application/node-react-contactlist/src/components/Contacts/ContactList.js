@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ContactCard from './ContactCard';
+import ContactCard from './ContactCard/ContactCard';
 
 export default function ContactList() {
   const [contactList, setContactList] = useState([]);
