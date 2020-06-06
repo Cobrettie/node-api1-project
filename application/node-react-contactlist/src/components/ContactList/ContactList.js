@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ContactCard from './ContactCard';
 
 export default function ContactList() {
   const [contactList, setContactList] = useState([]);
@@ -18,12 +19,7 @@ export default function ContactList() {
     <div>
       <h2>Contact List</h2>
       {contactList.map(contact => {
-        return (
-          <div key={contact.id}>
-            <p>{contact.name}</p>
-            <p>{contact.age}</p>
-          </div>
-        )
+        return <ContactCard key={contact.id} contact={contact} />
       })}
     </div>
   )
