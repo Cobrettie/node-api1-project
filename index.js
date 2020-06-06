@@ -72,11 +72,9 @@ server.delete('/api/users/:id', (req, res) => {
 
 // Update - patch is commonly used
 server.patch('/api/users/:id', (req, res) => {
-  // edit user with same id
-  // uses data from req body
-  // return modified user
   const { id, name, bio } = req.params;
   const changes = req.body;
+
   let found = users.find(user => user.id === id)
 
   if (!found) {
@@ -93,13 +91,33 @@ server.patch('/api/users/:id', (req, res) => {
 
   if (found) {
     Object.assign(found, changes)
-    res.status(200).json(changes)
+    res.status(200).json(found)
   }
 })
 
 // Update
 server.put('/api/users/:id', (req, res) => {
+  const { id, name, bio } = req.params;
+  const changes = req.body;
+  
+  let index = users.findIndex(user => user.id === id)
 
+  if(index !== -1) {
+    users[index] = changes
+    res.status(200).json(users[index])
+  }
+
+  if (!index) {
+    res.status(404).json({ message: "The user with the specified ID does not exist." })
+  }
+
+  if (!name || !bio) {
+    res.status(400).json({ errorMessage: "Please provide name and bio for the user." })
+  }
+
+  if (!changes) {
+    res.status(500).json({ errorMessage: "The user information could not be modified." })
+  }
 })
 
 const PORT = 4000;
