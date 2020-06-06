@@ -108,14 +108,6 @@ When the client makes a `PUT` request to `/api/users/:id`:
   - [x] respond with HTTP status code `400` (Bad Request).
   - [x] return the following JSON response: `{ errorMessage: "Please provide name and bio for the user." }`.
 
-
-
-
-
-
-
-
-
 - If there's an error when updating the _user_:
 
   - [x] respond with HTTP status code `500`.
@@ -126,11 +118,6 @@ When the client makes a `PUT` request to `/api/users/:id`:
   - update the user document in the database using the new information sent in the `request body`.
   - [x] respond with HTTP status code `200` (OK).
   - [x] return the newly updated _user document_.
-
-
-
-
-
 
 
 ## Stretch Problems
