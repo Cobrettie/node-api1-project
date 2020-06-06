@@ -14,13 +14,25 @@ server.get('/', (request, response) => {
 server.post('/api/users', (req, res) => {
   const userInfo = req.body;
   userInfo.id = shortid.generate();
-  users.push(userInfo);
-  res.status(201).json(userInfo);
+
+  if (!userInfo.name || !userInfo.bio) {
+    res.status(400).json({ errorMessage: "Please provide name and bio for the user." })
+  }
+
+  if (userInfo) {
+    users.push(userInfo)
+    res.status(201).json(userInfo)
+  }
 })
 
 // Read = Get
 server.get('/api/users', (req, res) => {
-  // return an array
+  const allUsers = req.body;
+
+  if (!allUsers) {
+    res.status(500).json({ errorMessage: "The users information could not be retrieved." })
+  } 
+
   res.status(200).json(users)
 })
 
@@ -63,6 +75,15 @@ server.put('/api/users/:id', (req, res) => {
   // edit user with same id
   // uses data from req body
   // return modified user
+})
+
+// POST 
+server.post('/api/users', (req, res) => {
+  const { name, bio } = req.body;
+
+  if (!name || !bio) {
+    res.status(400).json({ errorMessage: "Please provide name and bio for the user." })
+  }
 })
 
 
