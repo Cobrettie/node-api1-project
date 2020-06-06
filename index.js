@@ -103,8 +103,9 @@ server.put('/api/users/:id', (req, res) => {
   let index = users.findIndex(user => user.id === id)
 
   if(index !== -1) {
-    users[index] = changes
-    res.status(200).json(users[index])
+    changes.id = id;
+    users[index] = changes;
+    res.status(200).json(users[index]);
   }
 
   if (!index) {
