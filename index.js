@@ -22,6 +22,8 @@ server.post('/api/users', (req, res) => {
   if (userInfo) {
     users.push(userInfo)
     res.status(201).json(userInfo)
+  } else {
+    res.status(500).json({ errorMessage: "There was an error while saving the user to the database" })
   }
 })
 
@@ -66,31 +68,39 @@ server.delete('/api/users/:id', (req, res) => {
   if (!found) {
     res.status(404).json({ message: "The user with the specified ID does not exist" })
   }
-  
-
 })
 
-// Edit
-server.put('/api/users/:id', (req, res) => {
+// Update - patch is commonly used
+server.patch('/api/users/:id', (req, res) => {
   // edit user with same id
   // uses data from req body
   // return modified user
-})
+  const { id, name, bio } = req.params;
+  const changes = req.body;
+  let found = users.find(user => user.id === id)
 
-// POST 
-server.post('/api/users', (req, res) => {
-  const { name, bio } = req.body;
+  if (!found) {
+    res.status(404).json({ message: "The user with the specified ID does not exist." })
+  }
 
   if (!name || !bio) {
     res.status(400).json({ errorMessage: "Please provide name and bio for the user." })
   }
+
+  if (!changes) {
+    res.status(500).json({ errorMessage: "The user information could not be modified." })
+  }
+
+  if (found) {
+    Object.assign(found, changes)
+    res.status(200).json(changes)
+  }
 })
 
+// Update
+server.put('/api/users/:id', (req, res) => {
 
-
-
-
-
+})
 
 const PORT = 4000;
 
