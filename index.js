@@ -95,7 +95,7 @@ server.patch('/api/users/:id', (req, res) => {
   }
 })
 
-// Update
+// Update - using put
 server.put('/api/users/:id', (req, res) => {
   const { id, name, bio } = req.params;
   const changes = req.body;
