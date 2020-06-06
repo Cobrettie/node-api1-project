@@ -5,7 +5,6 @@ const shortid = require('shortid');
 server.use(express.json());
 
 let users = [];
-let user = {};
 
 server.get('/', (request, response) => {
   response.json({ message: 'hello im ur server' })
@@ -27,6 +26,17 @@ server.get('/api/users', (req, res) => {
 
 server.get('/api/users/:id', (req, res) => {
   // return user object that matches id
+  const { id } = req.params;
+  const user = req.body;
+  const found = users.find(user => user.id === id);
+
+  if (!found) {
+    res.status(404).json({ message: "The user with the specified ID does not exist." })
+  }
+
+  if (!user) {
+    res.status(500).json({ errorMessage: "The user information could not be retrieved." })
+  }
 })
 
 // Delete
