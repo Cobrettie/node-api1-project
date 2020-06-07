@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ContactCard from './ContactCard/ContactCard';
+import ContactCard from '../ContactCard/ContactCard';
+import { ContactCardsContainerDiv } from './ContactListStyles';
 
 export default function ContactList() {
   const [contactList, setContactList] = useState([]);
@@ -17,10 +18,15 @@ export default function ContactList() {
 
   return (
     <div>
-      <h2>Contact List</h2>
-      {contactList.map(contact => {
-        return <ContactCard key={contact.id} contact={contact} />
-      })}
+
+      <h2>Your Contacts</h2>
+
+      <ContactCardsContainerDiv>
+        {contactList.map(contact => {
+          return <ContactCard key={contact.id} contact={contact} />
+        })}
+      </ContactCardsContainerDiv>
+
     </div>
   )
 }
