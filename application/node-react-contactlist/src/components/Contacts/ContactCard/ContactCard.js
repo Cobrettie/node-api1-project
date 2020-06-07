@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { ContainerDiv } from './ContactCardStyles';
+import { ContainerDiv, StyledInfoP, StyledBtn } from './ContactCardStyles';
 
 export default function ContactCard({ contact, action }) {
   const { id, name, bio} = contact;
@@ -17,10 +17,9 @@ export default function ContactCard({ contact, action }) {
 
   return (
     <ContainerDiv>
-      <p>{id}</p>
-      <p>{name}</p>
-      <p>{bio}</p>
-      <button onClick={removeContact}>Remove Contact</button>
+      <StyledInfoP>{name}</StyledInfoP>
+      <StyledInfoP>{bio}</StyledInfoP>
+      <StyledBtn onClick={removeContact}>Remove Contact</StyledBtn>
     </ContainerDiv>
   )
 }
