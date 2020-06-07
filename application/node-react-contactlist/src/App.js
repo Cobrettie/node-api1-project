@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import NavMenu from './components/NavMenu/NavMenu';
 import ContactList from './components/Contacts/ContactList/ContactList';
