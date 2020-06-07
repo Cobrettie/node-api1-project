@@ -1,11 +1,58 @@
 const express = require('express');
+const cors = require('cors');
 const server = express();
 const shortid = require('shortid');
 
 server.use(express.json());
 server.use(cors());
 
-let users = [];
+let users = [
+  {
+    id: shortid(),
+    name: 'Cobra',
+    bio: 'Chasing The Path'
+  },
+  {
+    id: shortid(),
+    name: 'LynN \'Baby Popper\'',
+    bio: 'Chasing The Path with Brettie'
+  },
+  {
+    id: shortid(),
+    name: 'Nova',
+    bio: 'Doing no no things'
+  },
+  {
+    id: shortid(),
+    name: 'Pepper',
+    bio: 'Seeking, beating Nova'
+  },
+  {
+    id: shortid(),
+    name: 'Tazer',
+    bio: 'relaxing'
+  },
+  {
+    id: shortid(),
+    name: 'Razer',
+    bio: 'relaxing'
+  },
+  {
+    id: shortid(),
+    name: 'Lazer',
+    bio: 'relaxing'
+  },
+  {
+    id: shortid(),
+    name: 'Blade',
+    bio: 'relaxing'
+  },
+  {
+    id: shortid(),
+    name: 'Marley',
+    bio: 'relaxing'
+  }
+];
 
 server.get('/', (request, response) => {
   response.json({ message: 'hello im ur server' })
@@ -61,7 +108,7 @@ server.delete('/api/users/:id', (req, res) => {
 
   if (found) {
     users = users.filter(user => user.id !== id)
-    res.status(200).json(found)
+    res.status(200).json(users)
   } else {
     res.status(500).json({ errorMessage: "The user could not be removed" })
   }
