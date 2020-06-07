@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { FormContainerDiv, StyledForm, StyledInput, StyledButton } from './AddContactFormStyles';
 
 export default function AddContactForm({ loader, unload }) {
   const [credentials, setCredentials] = useState({
@@ -26,23 +27,23 @@ export default function AddContactForm({ loader, unload }) {
 
   return (
     <div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <input
+      <FormContainerDiv>
+        <StyledForm onSubmit={handleSubmit}>
+          <StyledInput
             type='text'
             name='name'
             onChange={handleChange}
             placeholder='name'
           />
-          <input 
+          <StyledInput 
             type='text'
             name='bio'
             onChange={handleChange}
             placeholder='bio'
           />
-          <button type='submit'>Add Contact</button>
-        </form>
-      </div>
+          <StyledButton type='submit'>Add Contact</StyledButton>
+        </StyledForm>
+      </FormContainerDiv>
     </div>
   )
 }
