@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FormContainerDiv = styled.div`
   width: 30%;
-  margin: 0 auto;
+  margin: 80px auto 60px;
   border: 2px solid lightgrey;
   border-radius: 5px;
 `;
@@ -11,6 +11,7 @@ export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  padding: 30px 0 20px;
 `;
 
 export const StyledInput = styled.input`

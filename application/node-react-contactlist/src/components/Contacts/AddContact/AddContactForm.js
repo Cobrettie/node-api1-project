@@ -21,7 +21,9 @@ export default function AddContactForm(props) {
         console.log(response, credentials, props)
         props.unload();
         setPostSuccess(true)
-        props.history.push('/')
+        setTimeout(() => {
+          props.history.push('/')
+        }, 500)
       })
       .catch(err => console.log(err))
   }

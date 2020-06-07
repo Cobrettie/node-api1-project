@@ -9,6 +9,8 @@ export default function ContactList() {
 
   useEffect(() => {
     getContactList();
+
+    // return () => contactList
   }, [loading])
 
   const getContactList = () => {
@@ -29,9 +31,7 @@ export default function ContactList() {
 
   return (
     <div>
-
       <h2>Your Contacts</h2>
-
       <ContactCardsContainerDiv>
         {contactList.map(contact => {
           return (
@@ -44,7 +44,6 @@ export default function ContactList() {
           )
         })}
       </ContactCardsContainerDiv>
-
     </div>
   )
 }
