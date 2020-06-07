@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
 import NavMenu from './components/NavMenu/NavMenu';
 import ContactList from './components/Contacts/ContactList/ContactList';
 import AddContactForm from './components/Contacts/AddContact/AddContactForm';
@@ -26,8 +27,11 @@ function App() {
         <div className="App">
           <NavMenu />
           <h1>React, Node Contact List</h1>
-          <AddContactForm loader={loader} unload={unload} />
-          <ContactList />
+          <Route exact path='/' component={ContactList} />
+          <Route
+            path='/addcontact' 
+            render={props => <AddContactForm {...props} loader={loader} unload={unload} />} 
+          />
         </div>
       );
     }

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { FormContainerDiv, StyledForm, StyledInput, StyledButton } from './AddContactFormStyles';
 
-export default function AddContactForm({ loader, unload }) {
+export default function AddContactForm(props) {
+  const [postSuccess, setPostSuccess] = useState(false);
   const [credentials, setCredentials] = useState({
     name: '',
     bio: ''
@@ -14,16 +15,18 @@ export default function AddContactForm({ loader, unload }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    loader();
+    props.loader();
     axios.post('http://localhost:4000/api/users', credentials)
       .then(response => {
-        console.log(response, credentials, loader)
-        unload();
+        console.log(response, credentials, props)
+        props.unload();
+        setPostSuccess(true)
+        setTimeout(() => {
+          props.history.push('/')
+        }, 500)
       })
       .catch(err => console.log(err))
   }
-
-  console.log({loader, unload})
 
   return (
     <div>
