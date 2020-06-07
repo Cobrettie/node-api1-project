@@ -33,13 +33,13 @@ export default function AddContactForm({ loader, unload }) {
             type='text'
             name='name'
             onChange={handleChange}
-            placeholder='name'
+            placeholder='Name'
           />
           <StyledInput 
             type='text'
             name='bio'
             onChange={handleChange}
-            placeholder='bio'
+            placeholder='Bio'
           />
           <StyledButton type='submit'>Add Contact</StyledButton>
         </StyledForm>

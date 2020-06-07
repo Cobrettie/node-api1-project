@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NavMenu from './components/NavMenu/NavMenu';
 import ContactList from './components/Contacts/ContactList/ContactList';
 import AddContactForm from './components/Contacts/AddContact/AddContactForm';
 import './App.css';
@@ -23,6 +24,7 @@ function App() {
   } else {
       return (
         <div className="App">
+          <NavMenu />
           <h1>React, Node Contact List</h1>
           <AddContactForm loader={loader} unload={unload} />
           <ContactList />
