@@ -21,13 +21,11 @@ export default function AddContactForm(props) {
         console.log(response, credentials, props)
         props.unload();
         setPostSuccess(true)
-        setTimeout(() => {
-          props.history.push('/')
-        }, 500)
+        props.history.push('/')
       })
       .catch(err => console.log(err))
   }
-
+ 
   return (
     <div>
       <FormContainerDiv>

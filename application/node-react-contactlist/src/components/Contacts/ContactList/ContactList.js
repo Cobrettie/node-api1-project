@@ -17,9 +17,7 @@ export default function ContactList() {
       .then(response => {
         console.log(response)
         setContactList(response.data)
-        setTimeout(() => {
-          setLoading(false)
-        }, 1000)
+        setLoading(false)
       })
       .catch(err => console.log(err))
   }
