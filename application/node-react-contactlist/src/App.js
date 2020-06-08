@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
+
 import NavMenu from './components/NavMenu/NavMenu';
 import ContactList from './components/Contacts/ContactList/ContactList';
 import AddContactForm from './components/Contacts/AddContact/AddContactForm';
+import EditContactForm from './components/Contacts/EditContact/EditContactForm';
 import './App.css';
 
 function App() {
@@ -28,10 +30,10 @@ function App() {
         exact path='/addcontact' 
         render={ props => <AddContactForm {...props} loader={loader} unload={unload} /> } 
       />
+      <Route path='/editcontact' component={EditContactForm} />
+
     </div>
   );
 }
-
-
 
 export default App;

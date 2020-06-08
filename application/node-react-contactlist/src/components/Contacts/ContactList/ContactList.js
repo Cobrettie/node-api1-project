@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
+
 import ContactCard from '../ContactCard/ContactCard';
 import { ContactCardsContainerDiv } from './ContactListStyles';
 
-export default function ContactList() {
+export default function ContactList(props) {
   const [loading, setLoading] = useState(false);
   const [contactList, setContactList] = useState([]);
 
@@ -26,8 +28,9 @@ export default function ContactList() {
 
   const loader = () => {
     setLoading(true)
-    console.log(loading)
   }
+
+  console.log(loading, props)
 
   return (
     <div>
@@ -37,13 +40,14 @@ export default function ContactList() {
           return (
             <ContactCard 
               key={contact.id} 
+              {...props}
               contact={contact} 
               action={loader}
-              // removeContact={removeContact} 
             />
           )
         })}
       </ContactCardsContainerDiv>
+      {/* <Route path='/editcontact/:id' component={EditContactForm} /> */}
     </div>
   )
 }
