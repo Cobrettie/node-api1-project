@@ -30,7 +30,7 @@ function App() {
         exact path='/addcontact' 
         render={ props => <AddContactForm {...props} loader={loader} unload={unload} /> } 
       />
-      <Route path='/editcontact' component={EditContactForm} />
+      <Route path='/editcontact/:id' component={EditContactForm} />
 
     </div>
   );

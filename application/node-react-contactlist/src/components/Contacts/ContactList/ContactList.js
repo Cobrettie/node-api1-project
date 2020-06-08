@@ -42,7 +42,7 @@ export default function ContactList(props) {
               key={contact.id} 
               {...props}
               contact={contact} 
-              action={loader}
+              loader={loader}
             />
           )
         })}
